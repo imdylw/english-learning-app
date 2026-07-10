@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1...');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  :root {
+    --midnight: #0a1628;
+    --midnight-light: #111d32;
+    --midnight-card: #162033;
+    --gold: #d4a843;
+    --gold-light: #e8c466;
+    --gold-dim: rgba(212,168,67,0.15);
+    --starlight: #e8edf5;
+    --starlight-dim: rgba(232,237,245,0.65);
+    --starlight-muted: rgba(232,237,245,0.4);
+    --accent-cyan: #4ecdc4;
+    --accent-coral: #ff6b6b;
+    --accent-sky: #6cade5;
+
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 43 60% 55%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 215 28% 17%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 215 28% 17%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 43 60% 55%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 19% 35%;
+    --input: 215 19% 35%;
+    --ring: 43 60% 55%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[var(--midnight)] text-[var(--starlight)] antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+@layer components {
+  .glass-panel {
+    background: rgba(22, 32, 51, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 40px rgba(212, 168, 67, 0.3), 0 0 80px rgba(212, 168, 67, 0.1);
+  }
+
+  .card-hover {
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-btn {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-300;
+    background: var(--gold);
+    color: var(--midnight);
+  }
+
+  .gold-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 8px 24px rgba(212, 168, 67, 0.4);
+  }
+
+  .ghost-btn {
+    @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 border;
+    border-color: var(--gold);
+    color: var(--gold);
+    background: transparent;
+  }
+
+  .ghost-btn:hover {
+    background: rgba(212, 168, 67, 0.1);
+    border-color: var(--gold-light);
+  }
+
+  .section-padding {
+    @apply py-24 px-[5vw];
+  }
+
+  .content-max {
+    @apply max-w-[1200px] mx-auto;
+  }
+
+  .showcase-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .showcase-container.floating {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .showcase-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(115deg, transparent 40%, rgba(212,168,67,0.08) 45%, rgba(232,237,245,0.15) 50%, rgba(212,168,67,0.08) 55%, transparent 60%);
+    background-size: 200% 200%;
+    animation: shimmer 4s ease-in-out infinite;
+    pointer-events: none;
+  }
+
+  .showcase-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Instrument Serif', serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 200%; }
+  100% { background-position: -200% -200%; }
+}
+
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212, 168, 67, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(212, 168, 67, 0); }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--midnight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--midnight-card);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold-dim);
+}
+
+/* Selection */
+::selection {
+  background: var(--gold-dim);
+  color: var(--starlight);
+}
+/* إخفاء شاشة أخطاء Vite بالكامل ومنعها من الظهور في المتصفح */
+vite-error-overlay, 
+[id^="vite-error-overlay"], 
+.vite-error-overlay {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

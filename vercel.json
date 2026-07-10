@@ -1,25 +1,16 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "api/boot.ts",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": ["db/**", "contracts/**"]
-      }
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "api/boot.ts"
+      "dest": "/api/boot.ts"
     },
     {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
-      "dest": "/"
+      "dest": "/index.html"
     }
   ]
 }

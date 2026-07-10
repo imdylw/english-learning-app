@@ -12,17 +12,16 @@
     }
   ],
   "compilerOptions": {
+    "moduleResolution": "node",
+    "target": "ES2022",
+    "module": "ESNext",
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@contracts/*": [
-        "./contracts/*"
-      ],
-      "@db/*": [
-        "./db/*"
-      ]
+      "@db/*": ["db/*", "./db/*"],
+      "@contracts/*": ["contracts/*", "./contracts/*"]
     }
   }
 }

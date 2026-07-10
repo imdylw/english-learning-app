@@ -5,7 +5,8 @@
     "target": "ES2022",
     "lib": ["ES2022"],
     "module": "ESNext",
-    "types": ["node"],
+    // Removed explicit 'node' types to avoid missing @types/node errors when not installed.
+    // If you need Node type definitions, install them with `npm i -D @types/node` and re-add "node" here.
     "skipLibCheck": true,
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,

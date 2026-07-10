@@ -20,7 +20,7 @@ export default defineConfig({
   },
   // إيقاف تعليق السيرفر بسبب أخطاء الـ SSR المؤقتة
   ssr: {
-    noExternal: true, // يجبر الأكواد على العمل محلياً دون توليد أخطاء روابط خارجية
+    noExternal: true, // يمنع خروج المكتبات والأيقونات خارج حزمة الـ Build
   },
   test: {
     environment: "node",
